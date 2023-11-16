@@ -26,14 +26,14 @@ const slides = [
     const tagLine = document.querySelector('#banner p');
     const dotsContainer = document.querySelector('.dots');
 
-    // Fonction pour mettre à jour le carrousel
+    // Fonction de mise à jour de l'affichage du carousel //
     function updateCarousel() {
         bannerImg.src = `assets/images/slideshow/${slides[currentSlide].image}`;
         tagLine.innerHTML = slides[currentSlide].tagLine;
         updateDots();
     }
 
-    // Générer les points de navigation
+    // Génération et gestion des dots //
     function createDots() {
         slides.forEach((_, index) => {
             const dot = document.createElement('span');
@@ -46,7 +46,6 @@ const slides = [
         });
     }
 
-    // Mettre à jour les points actifs
     function updateDots() {
         document.querySelectorAll('.dots .dot').forEach((dot, index) => {
             if (index === currentSlide) {
@@ -57,19 +56,19 @@ const slides = [
         });
     }
 
-    // Naviguer vers la gauche
+    // Naviguer vers la gauche //
     document.querySelector('.arrow_left').addEventListener('click', () => {
         currentSlide = (currentSlide - 1 + slides.length) % slides.length;
         updateCarousel();
     });
 
-    // Naviguer vers la droite
+    // Naviguer vers la droite //
     document.querySelector('.arrow_right').addEventListener('click', () => {
         currentSlide = (currentSlide + 1) % slides.length;
         updateCarousel();
     });
 
-    // Initialiser
+    // Initialisation du Carousel // 
     createDots();
     updateCarousel();
 });
